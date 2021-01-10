@@ -1,0 +1,26 @@
+<!doctype html>
+<html xmlns:th="http://www.thymleaf.org">
+    <head>
+    </head>
+    <body>
+        <div>
+            List products
+            <a href="/product/add">Add product</a>
+
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+                <tr th:each="product : ${productList}">
+                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.name}"></td>
+                    <td>
+                        <a th:href="/product/delete/${product.id}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </body>
+</html>

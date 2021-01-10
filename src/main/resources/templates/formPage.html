@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <script>
+            function sayHi(){
+                let name = document.getElementById("name").value;
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                    let jsonResponse = JSON.parse(this.response)
+                    console.log(jsonResponse)
+
+                    document.getElementById("salut").innerHTML = jsonResponse.hi;
+                   }
+                };
+                url = "sayHi/api/"+name;
+                xhttp.open("GET", url, true);
+                xhttp.send();
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+
+            <div class="row">
+                <input type="button" value="Say Hi!" onclick="sayHi()">
+            </div>
+            <p id="salut"></p>
+        </div>
+    </body>
+</html>
