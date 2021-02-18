@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="baseHeader(links)">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/assets/css/index.css}">
+
+    <!--/* This is a placeholder for additional links */-->
+    <th:block th:replace="${links}" />
+</head>
+<body>
+    <div th:fragment="header" class="header">
+        <span class="logo" onclick="window.location.href='/'">DocParser</span>
+
+    </div>
+</body>
+</html>

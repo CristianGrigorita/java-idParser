@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="layout/header.html :: baseHeader(~{::link})">
+    <meta charset="UTF-8">
+    <title>Add Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .noData {
+            border: 2px solid #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+<header th:insert="layout/header.html :: header"></header>
+<div class="container upload-container">
+    <div class="upload-container-header">
+        <h1>Upload Document</h1>
+    </div>
+    <div class="upload-container-content">
+        <form method="POST" action="/candidate/doc/add" enctype="multipart/form-data">
+            <div class="row">
+                <div class="form-group col-md-2">
+                    <label class="btn btn-primary">
+                        Browse <input type="file" id="document" name="document" accept="image/*" hidden>
+                    </label>
+                </div>
+                <div class="col-md-8 image-container">
+                    <img src="" id="upload-preview" />
+                </div>
+                <div class="form-group col-md-2">
+                    <a href="/" class="btn btn-dark">Back</a>
+                    <input class="btn btn-secondary btn-disabled submit-button" type="submit" value="Upload" disabled>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#upload-preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+
+        var submitBtn = $(".submit-button");
+        submitBtn.removeClass("btn-secondary");
+        submitBtn.addClass("btn-success");
+        submitBtn.prop('disabled', false);
+    }
+
+    $("#document").change(function() {
+        readURL(this);
+    });
+</script>
+</html>

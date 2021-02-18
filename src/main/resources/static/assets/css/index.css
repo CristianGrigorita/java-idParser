@@ -1,0 +1,70 @@
+.body{
+    color: #333333;
+}
+
+.header{
+    background: #05659E;
+    height: 55px;
+    color: white;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.logo{
+    font-weight: bolder;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.image-container{
+    text-align: center;
+}
+
+.image-container img{
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.candidates-content-header{
+    margin-bottom: 20px
+}
+
+.upload-container-header{
+    text-align: center;
+    margin: 50px
+}
+
+.confident-green {
+    /*border-left: 5px solid #228b22 !important;*/
+    background: rgba(0, 204, 146, 0.7) !important;
+    color: #333333 !important;;
+}
+.confident-red {
+    /*border-left: 5px solid #ff0000 !important;*/
+    background: rgba(266, 41, 79, 0.7) !important;
+    color: #333333 !important;;
+}
+
+.confident-yellow {
+    background: rgba(254, 215, 102, 0.7) !important;
+    color: #333333 !important;
+}
+
+.upload-user .upload-form {
+    margin-bottom: 60px;
+}
+
+.upload-user .parsed-data .row{
+    justify-content: center;
+}
+.left-btn {
+    border-bottom-left-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+}
+
+.right-btn{
+    border-bottom-right-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+}

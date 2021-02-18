@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .noData {
+            border: 2px solid #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>User</h1>
+        <form>
+            <div class="form-group">
+                <label for="cnp">CNP:</label>
+                <input  class="form-control" th:classappend="${(userData.cnp == null ? 'noData' : '') + (userData.cnpConf > 0.75 ? 'confident' : 'unconfident')}" type="text" id="cnp" name="cnp" th:value="${userData.cnp}">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input class="form-control" th:classappend="${(userData.lastName == null  ? noData : '') + (userData.lastNameConf > 0.75 ? 'confident' : 'unconfident')}" type="text" id="lastName" name="lastName" th:value="${userData.lastName}">
+            </div>
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input  class="form-control" th:classappend="${(userData.firstName == null ? noData : '') + (userData.firstNameConf > 0.75 ? 'confident' : 'unconfident')}" type="text" id="firstName" name="firstName" th:value="${userData.firstName}">
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input  class="form-control" th:classappend="${(userData.address == null ? noData : '') + (userData.addressConf > 0.75 ? 'confident' : 'unconfident')}" type="text" id="address" name="address" th:value="${userData.address}">
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h1>With Confidence (<span th:text="${minConfidence}"></span>)</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Word</th>
+                        <th>Confidence</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="wordAndConf : ${wordsWithConfidence.keySet()}">
+                        <td><span th:text="${wordAndConf.toString()}"> Cuvant </span></td>
+                        <td><span th:text="${wordsWithConfidence.get(wordAndConf).toString()}"> Scor </span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <h1>Confidence score</h1>
+                    <ul class="list-group">
+<!--                        <li th:each="confidence : ${confidenceScore}" th:text="${confidence}" class="list-group-item"></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <h1>Raw Data</h1>
+        <ol class="list-group">
+            <li th:each="item : ${data}" th:text="${item}" class="list-group-item"></li>
+        </ol>
+
+        <table class="table">
+            <tr>
+                <th>Data</th>
+            </tr>
+            <tr th:each="dat : ${data}">
+                <td th:text="${dat}"></td>
+            </tr>
+        </table>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
